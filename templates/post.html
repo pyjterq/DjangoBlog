@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+   # tutaj piszemy html z bootstrapem
+   {% include '_newsletter.html' with post=post  %}
+
+
+{% endblock %}
