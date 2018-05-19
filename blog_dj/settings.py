@@ -13,8 +13,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 from django.core.exceptions import ImproperlyConfigured
 
-ABC = os.getenv("ABC", 101)
-print('ABC', ABC)
+# ABC = os.getenv("ABC", 101) alternatywa do local_settings.py
+# print('ABC', ABC)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

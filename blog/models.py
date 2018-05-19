@@ -9,4 +9,18 @@ from django.contrib.auth.models import User
 
 
 class Entry(models.Model):
-    pass
+    user = models.ManyToManyField(User)
+    title = models.CharField(max_length=250)
+    created_at = models.DateTimeField()
+    content = models.TextField()
+    is_archived = models.BooleanField()
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=250)
+    entry = models.ManyToManyField(Entry)
+
+
+
+
+
