@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load blog %}
+{% block content %}
+    {% for entry in entries %}
+        <div class="post">
+            <div class="date">
+                {{ entry.created_at }}
+            </div>
+            <h1><a href="">{{ entry.title }}</a></h1>
+            <p>{{ entry.mk_content|markdown }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

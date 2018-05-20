@@ -17,12 +17,16 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from blog.views import simple_view
+from django.conf.urls import url, include
+from markdownx import urls as markdownx
+from blog.views import simple_view, post_list
 
 
 urlpatterns = [
+    path('', post_list),
     path('admin/', admin.site.urls),
-    path('example/', simple_view)
+    path('example/', simple_view),
+    url(r'^markdownx/', include(markdownx)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
