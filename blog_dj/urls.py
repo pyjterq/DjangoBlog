@@ -16,10 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf import settings
-from django.conf.urls.static import static
-from django.conf.urls import url, include
 from markdownx import urls as markdownx
 from blog.views import simple_view, post_list
+from django.conf.urls import include, url
 
 
 urlpatterns = [
@@ -27,11 +26,17 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('example/', simple_view),
     url(r'^markdownx/', include(markdownx)),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
 
 
-# if settings.DEBUG:
-#     from django.conf.urls.static import static
-#
-#     urlpatterns += static(
-#         settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+if settings.DEBUG:
+    from django.conf.urls.static import static
+
+    urlpatterns += static(
+        settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns
