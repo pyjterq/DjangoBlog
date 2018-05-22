@@ -6,8 +6,9 @@
             <div class="date">
                 {{ entry.created_at }}
             </div>
-            <h1><a href="">{{ entry.title }}</a></h1>
-            <p>{{ entry.mk_content|markdown }}</p>
+            <h2><a href="{% url 'entry' slug=entry.slug %}">{{ entry.title }}</a></h2>
+{#            <p>{{ entry.snippet|markdown }}</p>#}
+            <p>{{ entry.mk_content|markdown|truncatewords:30 }}</p>
         </div>
     {% endfor %}
 {% endblock %}

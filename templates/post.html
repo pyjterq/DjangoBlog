@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
-
-{% block title %}{{ post.title }}{% endblock %}
+{% load blog %}
+{% block title %}{{ entry.title }}{% endblock %}
 
 {% block content %}
-   # tutaj piszemy html z bootstrapem
-    <p>Test</p>
+   <div class="post">
+            <div class="date">
+                {{ entry.created_at }}
+            </div>
+            <h2><a href="{% url 'entry' slug=entry.slug %}">{{ entry.title }}</a></h2>
+{#            <p>{{ entry.snippet|markdown }}</p>#}
+            <p>{{ entry.mk_content|markdown }}</p>
+        </div>
    {% include '_newsletter.html' with post=post  %}
-
 
 {% endblock %}

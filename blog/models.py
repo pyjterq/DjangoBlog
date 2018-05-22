@@ -18,7 +18,7 @@ class Entry(models.Model):
     slug = models.SlugField(max_length=250) # TODO: użyj Slugify
     created_at = models.DateTimeField()
     posted_at = models.DateTimeField()
-    content = models.TextField()
+    # content = models.TextField()
     mk_content = MarkdownxField()
     is_archived = models.BooleanField(default=False)
     categories = models.ManyToManyField(Category)
@@ -31,5 +31,5 @@ class Entry(models.Model):
         return super().save(*args, **kwargs)
 
 
-
-
+    # def snippet(self):
+    #     return self.mk_content[:300] + ' …'

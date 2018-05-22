@@ -19,13 +19,17 @@ from django.conf import settings
 from markdownx import urls as markdownx
 from blog.views import simple_view, post_list
 from django.conf.urls import include, url
+from blog import views
 
 
 urlpatterns = [
-    path('', post_list),
+    path('', post_list, name='list'),
     path('admin/', admin.site.urls),
     path('example/', simple_view),
     url(r'^markdownx/', include(markdownx)),
+    # path('/<slug:slug>', views.show_entry),
+    url(r'^(?P<slug>[\w-]+)/$', views.show_entry, name='entry'),
+
 ]
 
 

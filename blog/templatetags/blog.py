@@ -9,3 +9,7 @@ register = template.Library()
 @register.filter()
 def markdown(value, arg=None):
     return mark_safe(markdownify(value))
+
+@register.filter(name='emphasis')
+def emphasis(value):
+    return '*' + value + '*'
