@@ -16,31 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf import settings
-from markdownx import urls as markdownx
-from blog.views import simple_view, post_list
-from django.conf.urls import include, url
-from blog import views
+from django.conf.urls.static import static
+from blog.views import simple_view
 
 
 urlpatterns = [
-    path('', post_list, name='list'),
     path('admin/', admin.site.urls),
-    path('example/', simple_view),
-    url(r'^markdownx/', include(markdownx)),
-    # path('/<slug:slug>', views.show_entry),
-    url(r'^(?P<slug>[\w-]+)/$', views.show_entry, name='entry'),
-
-]
+    path('example/', simple_view)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
-if settings.DEBUG:
-    from django.conf.urls.static import static
-
-    urlpatterns += static(
-        settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
-if settings.DEBUG:
-    import debug_toolbar
-    urlpatterns = [
-        url(r'^__debug__/', include(debug_toolbar.urls)),
-    ] + urlpatterns
+# if settings.DEBUG:
+#     from django.conf.urls.static import static
+#
+#     urlpatterns += static(
+#         settings.STATIC_URL, document_root=settings.STATIC_ROOT)

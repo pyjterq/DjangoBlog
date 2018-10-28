@@ -1,0 +1,7 @@
+Django==2.0.5
+django-debug-toolbar==1.9.1
+django-markdownx==2.0.23
+Markdown==2.6.11
+Pillow==5.1.0
+pytz==2018.4
+sqlparse==0.2.4
